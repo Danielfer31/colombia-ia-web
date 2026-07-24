@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-hidden="true" fill="none" stroke="#001A4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Inteligente: la evidencia se ordena en señal -->
+  <path d="M10 52h44" opacity=".55"/>
+  <path d="M14 44V33M26 44V25M38 44V29M50 44V17" opacity=".28" stroke-width="5"/>
+  <path d="M14 33 26 25l12 4 12-12" stroke-width="2.6"/>
+  <circle cx="14" cy="33" r="3.2" fill="#DCE2EC" stroke="#001A4F" stroke-width="1.8"/>
+  <circle cx="26" cy="25" r="3.2" fill="#006FC9" stroke="none"/>
+  <circle cx="38" cy="29" r="3.2" fill="#DCE2EC" stroke="#001A4F" stroke-width="1.8"/>
+  <circle cx="50" cy="17" r="4" fill="#FFB900" stroke="none"/>
+</svg>
