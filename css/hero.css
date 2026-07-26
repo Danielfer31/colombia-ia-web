@@ -71,6 +71,16 @@
 /* Bloquea el scroll mientras el preloader está activo */
 html.is-loading, html.is-loading body { overflow: hidden; }
 
+/* Sin JavaScript el preloader nunca se retiraba y dejaba la página en una
+   pantalla navy vacía y sin scroll. Con .no-js el contenido se ve igual. */
+html.no-js #preloader { display: none; }
+html.no-js, html.no-js body { overflow: visible; }
+html.no-js [data-hero-reveal] { opacity: 1; transform: none; }
+html.no-js .rotator-sizer { display: none; }
+html.no-js .rotator-item { position: relative; }
+html.no-js .rotator-item:not(.is-active) { display: none; }
+html.no-js .rotator-line > span { transform: none; }
+
 /* ============ Fondo del hero ============ */
 .hero-bg {
   position: absolute;
@@ -346,9 +356,11 @@ html.has-cursor .cursor-ring { opacity: 1; }
 
 /* ============ Responsive ============ */
 @media (max-width: 720px) {
+  /* .hero-cue está oculto aquí abajo: el padding inferior que le reservaba
+     sitio hacía que el hero midiera ~800px en una pantalla de 740px. */
   #hero {
-    padding-top: clamp(100px, 18vh, 140px);
-    padding-bottom: clamp(120px, 18vh, 160px);
+    padding-top: clamp(92px, 14vh, 124px);
+    padding-bottom: clamp(64px, 10vh, 96px);
   }
   #hero .hero-title { font-size: clamp(2.1rem, 9.4vw, 3.4rem); max-width: 100%; }
   #hero .hero-foot { align-items: flex-start; }

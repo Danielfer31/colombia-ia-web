@@ -45,9 +45,11 @@
       preloader.classList.add('is-done');
       var hero = document.getElementById('hero');
       if (hero) hero.classList.add('is-ready');
-      if (window.ColombIAGL) window.ColombIAGL.init(document.getElementById('hero-canvas'));
-      initRotator();
-      initCursor();
+      // Cada pieza se aísla: si el WebGL o el cursor fallan en algún
+      // navegador, el evento debe emitirse igual o main.js nunca arranca.
+      try { if (window.ColombIAGL) window.ColombIAGL.init(document.getElementById('hero-canvas')); } catch (e) {}
+      try { initRotator(); } catch (e) {}
+      try { initCursor(); } catch (e) {}
       document.dispatchEvent(new CustomEvent('colombia:hero-ready'));
     }, wait);
   }
@@ -119,7 +121,9 @@
       ring.classList.toggle('on-light', !overHero);
     }, { passive: true });
 
-    document.addEventListener('mouseleave', function () { root.classList.remove('has-cursor'); });
+    // mouseleave sobre `document` no se dispara de forma fiable; el elemento
+    // raíz sí avisa cuando el puntero abandona la ventana.
+    root.addEventListener('mouseleave', function () { root.classList.remove('has-cursor'); });
 
     document.addEventListener('mouseover', function (e) {
       var t = e.target.closest && e.target.closest('a, button, [data-cursor]');
@@ -132,6 +136,11 @@
       ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
       requestAnimationFrame(follow);
     })();
+  }
+
+  if (!preloader) {
+    root.classList.remove('is-loading');
+    return;
   }
 
   requestAnimationFrame(function () {

@@ -1,17 +1,64 @@
 <!DOCTYPE html>
-<html lang="es" class="is-loading">
+<html lang="es" class="is-loading no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ColombIA — Centro Institucional de Inteligencia Artificial de Colombia</title>
 <meta name="description" content="ColombIA fortalece capacidades públicas mediante inteligencia artificial responsable, datos, investigación aplicada y acompañamiento territorial.">
+<meta name="theme-color" content="#001A4F">
+<link rel="canonical" href="https://colombia-ia.org/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ColombIA">
+<meta property="og:locale" content="es_CO">
+<meta property="og:url" content="https://colombia-ia.org/">
+<meta property="og:title" content="ColombIA — Centro Institucional de Inteligencia Artificial de Colombia">
+<meta property="og:description" content="ColombIA fortalece capacidades públicas mediante inteligencia artificial responsable, datos, investigación aplicada y acompañamiento territorial.">
+<meta property="og:image" content="https://colombia-ia.org/assets/logo_horizontal.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ColombIA — Centro Institucional de Inteligencia Artificial de Colombia">
+<meta name="twitter:description" content="ColombIA fortalece capacidades públicas mediante inteligencia artificial responsable, datos, investigación aplicada y acompañamiento territorial.">
+<meta name="twitter:image" content="https://colombia-ia.org/assets/logo_horizontal.png">
+
+<link rel="icon" href="assets/simbolo_full.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/simbolo_full.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
-<link rel="stylesheet" href="css/hero.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/hero.css?v=4">
+
+<script>
+  /* Marca que sí hay JS antes del primer pintado (evita el parpadeo del
+     fallback) y desbloquea la página pase lo que pase con hero.js. */
+  document.documentElement.classList.remove('no-js');
+  setTimeout(function () {
+    var r = document.documentElement;
+    if (!r.classList.contains('is-loading')) return;
+    r.classList.remove('is-loading');
+    var p = document.getElementById('preloader');
+    if (p) p.classList.add('is-done');
+  }, 10000);
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ColombIA",
+  "alternateName": "Centro Institucional de Inteligencia Artificial de Colombia",
+  "url": "https://colombia-ia.org/",
+  "logo": "https://colombia-ia.org/assets/logo_horizontal.png",
+  "description": "ColombIA fortalece capacidades públicas mediante inteligencia artificial responsable, datos, investigación aplicada y acompañamiento territorial.",
+  "email": "contacto@colombia-ia.org",
+  "areaServed": { "@type": "Country", "name": "Colombia" }
+}
+</script>
 </head>
 <body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <div id="preloader" aria-hidden="true">
   <div class="pl-text">
@@ -25,17 +72,19 @@
 <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
 
+<!-- href reales: sin JS (o si main.js falla) siguen navegando a su sección,
+     y la URL queda compartible. Con JS main.js intercepta y usa history. -->
 <nav id="side-nav" aria-label="Navegación principal">
-  <a href="#" data-page-link="inicio" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Inicio</span></a>
-  <a href="#" data-page-link="incidencia" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Incidencia</span></a>
-  <a href="#" data-page-link="investigaciones" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Investigaciones</span></a>
-  <a href="#" data-page-link="cursos" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Cursos</span></a>
-  <a href="#" data-page-link="soluciones" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Soluciones</span></a>
+  <a href="#contenido" data-page-link="inicio" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Inicio</span></a>
+  <a href="#pagina-incidencia" data-page-link="incidencia" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Incidencia</span></a>
+  <a href="#pagina-investigaciones" data-page-link="investigaciones" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Investigaciones</span></a>
+  <a href="#pagina-cursos" data-page-link="cursos" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Cursos</span></a>
+  <a href="#pagina-soluciones" data-page-link="soluciones" class="sn-item"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Soluciones</span></a>
   <a href="#conversemos" data-section-link="conversemos" class="sn-item sn-cta"><span class="sn-dot" aria-hidden="true"></span><span class="sn-label">Conversemos</span></a>
 </nav>
 
 <!-- ═════════ INICIO ═════════ -->
-<main data-page="inicio" class="is-active" data-screen-label="Inicio">
+<main id="contenido" data-page="inicio" class="is-active" data-screen-label="Inicio">
 
   <section id="hero" data-screen-label="01 Hero">
     <div class="hero-bg" id="hero-bg">
@@ -71,8 +120,13 @@
 
       <h1 class="hero-title" data-hero-reveal style="--i:2">
         <span class="hero-title-lead">Inteligencia pública para</span>
-        <span class="rotator" id="hero-rotator" aria-live="polite">
-          <span class="rotator-sizer" aria-hidden="true">municipios que deciden<br>con evidencia.</span>
+        <!-- El rotador es puramente visual. Con aria-live="polite" reanunciaba
+             el titular cada 4,2 s, y como las 4 variantes viven en el DOM el
+             nombre accesible del h1 era la concatenación de todas ellas. Se
+             oculta a la API de accesibilidad y se expone una única frase. -->
+        <span class="sr-only">territorios que deciden mejor.</span>
+        <span class="rotator" id="hero-rotator" aria-hidden="true">
+          <span class="rotator-sizer">municipios que deciden<br>con evidencia.</span>
           <span class="rotator-item is-active">
             <span class="rotator-line"><span>territorios que deciden</span></span>
             <span class="rotator-line"><span>mejor<i>.</i></span></span>
@@ -197,7 +251,7 @@
   </section>
 
   <section data-screen-label="06 Investigaciones destacadas" style="background:#FBFAF6;padding:0 clamp(20px,4vw,48px) clamp(90px,13vw,170px)">
-    <div style="max-width:1078px;margin:0 auto;border-top:1px solid rgba(0,26,79,.25);padding-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:minmax(min(100%,320px),1.6fr) minmax(min(100%,240px),1fr);gap:clamp(32px,5vw,72px)">
+    <div class="grid-asimetrico" style="max-width:1078px;margin:0 auto;border-top:1px solid rgba(0,26,79,.25);padding-top:clamp(48px,6vw,72px)">
       <div data-reveal="1" style="display:flex;flex-direction:column;gap:22px">
         <p style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#3A4150">05 — Investigaciones destacadas</p>
         <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:300;font-size:clamp(1.8rem,3.8vw,3.2rem);line-height:1.12;text-align:left;text-wrap:pretty">Investigación aplicada sobre IA pública territorial.</h2>
@@ -297,7 +351,7 @@
 </main>
 
 <!-- ═════════ INCIDENCIA ═════════ -->
-<main data-page="incidencia" data-screen-label="Incidencia" style="padding-top:40px">
+<main id="pagina-incidencia" data-page="incidencia" data-screen-label="Incidencia" style="padding-top:40px">
   <section style="background:#FBFAF6;padding:clamp(24px,4vw,48px) clamp(20px,4vw,48px) clamp(70px,9vw,120px)">
     <div style="max-width:1078px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
       <div data-reveal="1" style="display:flex;flex-direction:column;gap:24px">
@@ -314,7 +368,7 @@
 </main>
 
 <!-- ═════════ INVESTIGACIONES ═════════ -->
-<main data-page="investigaciones" data-screen-label="Investigaciones" style="padding-top:40px">
+<main id="pagina-investigaciones" data-page="investigaciones" data-screen-label="Investigaciones" style="padding-top:40px">
   <section style="background:#FBFAF6;padding:clamp(24px,4vw,48px) clamp(20px,4vw,48px) clamp(70px,9vw,120px)">
     <div style="max-width:1078px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
       <div data-reveal="1" style="display:flex;flex-direction:column;gap:24px">
@@ -335,7 +389,7 @@
 </main>
 
 <!-- ═════════ CURSOS ═════════ -->
-<main data-page="cursos" data-screen-label="Cursos" style="padding-top:40px">
+<main id="pagina-cursos" data-page="cursos" data-screen-label="Cursos" style="padding-top:40px">
   <section style="background:#FBFAF6;padding:clamp(24px,4vw,48px) clamp(20px,4vw,48px) clamp(70px,9vw,120px)">
     <div style="max-width:1078px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
       <div data-reveal="1" style="display:flex;flex-direction:column;gap:24px">
@@ -357,7 +411,7 @@
   <summary style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:16px;max-width:640px">
       <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Decidir</h3>
+        <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Decidir</h2>
         <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:6px 16px">Ruta en diseño</span>
       </div>
       <p style="margin:0;font-size:1rem;line-height:1.58;color:#3A4150">Prepara a alcaldes, secretarios y concejales para ejercer un criterio informado sobre IA en su gobierno: distinguir qué es y qué no es la IA, priorizar problemas públicos, decidir con criterios claros la compra de soluciones de IA sin caer en dependencia de un proveedor, y gobernar su uso institucional con responsabilidad.</p>
@@ -394,7 +448,7 @@
       <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Directivo · 3h</span>
@@ -427,7 +481,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Árbol de Problemas y Análisis Multicriterio</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Árbol de Problemas y Análisis Multicriterio</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Directivo · 3h</span>
@@ -459,7 +513,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Comprar IA sin caer en captura de proveedor</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Comprar IA sin caer en captura de proveedor</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Directivo · 3h</span>
@@ -491,7 +545,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Kit de IA Responsable</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Kit de IA Responsable</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Directivo · 3h</span>
@@ -523,7 +577,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Clínica Directiva</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Clínica Directiva</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Directivo · 3h</span>
@@ -559,7 +613,7 @@
   <summary style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:16px;max-width:640px">
       <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Formular</h3>
+        <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Formular</h2>
         <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:6px 16px">Ruta en diseño</span>
       </div>
       <p style="margin:0;font-size:1rem;line-height:1.58;color:#3A4150">Que los equipos de planeación municipal dominen el ciclo completo de formulación de proyectos con apoyo de IA: desde el diagnóstico territorial y la lectura de documentos públicos, hasta la construcción del árbol de problemas, el diligenciamiento técnico de la MGA (identificación, indicadores, riesgos) y la búsqueda de financiación vía SGR o cooperación internacional.</p>
@@ -599,7 +653,7 @@
       <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -632,7 +686,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Datos con derechos</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Datos con derechos</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -664,7 +718,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Ficha Municipal Inteligente</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Ficha Municipal Inteligente</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -697,7 +751,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Lectura Asistida con IA de PDM, Actas de Concejo y PQRSD</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Lectura Asistida con IA de PDM, Actas de Concejo y PQRSD</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -729,7 +783,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Árbol de Problemas y Análisis Multicriterio</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Árbol de Problemas y Análisis Multicriterio</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -761,7 +815,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">MGA I: de problema a cadena de valor</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">MGA I: de problema a cadena de valor</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -793,7 +847,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">MGA 2: Indicadores y Riesgos</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">MGA 2: Indicadores y Riesgos</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -825,7 +879,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Financiación: SGR y Cooperación Internacional</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Financiación: SGR y Cooperación Internacional</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -861,7 +915,7 @@
   <summary style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:16px;max-width:640px">
       <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Operar</h3>
+        <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Operar</h2>
         <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:6px 16px">Ruta en diseño</span>
       </div>
       <p style="margin:0;font-size:1rem;line-height:1.58;color:#3A4150">Que el personal de atención ciudadana y apoyo administrativo use IA de forma segura y verificada en su trabajo diario: redactar prompts institucionales, proteger datos personales, automatizar tareas internas con supervisión humana, y atender y comunicarse con la ciudadanía con lenguaje claro y responsable.</p>
@@ -899,7 +953,7 @@
       <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Operativo · 3h</span>
@@ -932,7 +986,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Prompting institucional</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Prompting institucional</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Operativo · 3h</span>
@@ -965,7 +1019,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Datos con derechos</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Datos con derechos</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Operativo · 3h</span>
@@ -997,7 +1051,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Automatizar tareas internas</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Automatizar tareas internas</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Operativo · 3h</span>
@@ -1029,7 +1083,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Atención Ciudadana Asistida por IA</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Atención Ciudadana Asistida por IA</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Operativo · 3h</span>
@@ -1061,7 +1115,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Comunicación Pública y Pedagogía</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Comunicación Pública y Pedagogía</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Operativo · 3h</span>
@@ -1097,7 +1151,7 @@
   <summary style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:16px;max-width:640px">
       <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Supervisar</h3>
+        <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);text-align:left">Supervisar</h2>
         <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:6px 16px">Ruta en diseño</span>
       </div>
       <p style="margin:0;font-size:1rem;line-height:1.58;color:#3A4150">Que los equipos de gobernaciones, control fiscal y veeduría desarrollen la capacidad técnica para supervisar el uso de IA en entidades municipales: verificar el manejo de datos, auditar procesos de contratación de IA, evaluar pilotos GovTech, revisar la gobernanza institucional y detectar riesgos de sesgo o incidentes.</p>
@@ -1135,7 +1189,7 @@
       <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">¿Qué es (y qué no es) IA en la gestión pública?</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -1168,7 +1222,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Datos con derechos</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Datos con derechos</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -1200,7 +1254,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Comprar IA sin caer en captura de proveedor</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Comprar IA sin caer en captura de proveedor</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -1232,7 +1286,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Evaluar Piloto GovTech</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Evaluar Piloto GovTech</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -1264,7 +1318,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Kit de IA Responsable</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Kit de IA Responsable</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -1296,7 +1350,7 @@
     <details class="curso-taller" data-reveal="1" style="padding:20px 0 20px 24px">
   <summary style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-      <h4 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Riesgos, Sesgo e Incidentes de IA</h4>
+      <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:400;font-size:1.1rem;text-align:left">Riesgos, Sesgo e Incidentes de IA</h3>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="font-family:Manrope,sans-serif;font-weight:400;font-size:.68rem;white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,26,79,.35);color:#3A4150;border-radius:75px;padding:5px 14px">Técnico · 4h</span>
@@ -1334,7 +1388,7 @@
 </main>
 
 <!-- ═════════ SOLUCIONES ═════════ -->
-<main data-page="soluciones" data-screen-label="Soluciones" style="padding-top:40px">
+<main id="pagina-soluciones" data-page="soluciones" data-screen-label="Soluciones" style="padding-top:40px">
   <section style="background:#FBFAF6;padding:clamp(24px,4vw,48px) clamp(20px,4vw,48px) clamp(70px,9vw,120px)">
     <div style="max-width:1078px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,7vw,80px)">
       <div data-reveal="1" style="display:flex;flex-direction:column;gap:24px">
@@ -1497,8 +1551,8 @@
   </div>
 </footer>
 
-<script src="js/hero-gl.js?v=2"></script>
-<script src="js/hero.js?v=2"></script>
-<script src="js/main.js?v=3"></script>
+<script src="js/hero-gl.js?v=3"></script>
+<script src="js/hero.js?v=3"></script>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>

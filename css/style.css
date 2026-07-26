@@ -12,6 +12,44 @@ a:hover { color: #006FC9; }
 ::selection { background: #FFB900; color: #001A4F; }
 img, video { max-width: 100%; }
 
+/* Cualquier destino de ancla queda por debajo de la barra fija, no tapado por ella. */
+[id] { scroll-margin-top: clamp(76px, 12vh, 112px); }
+
+/* Foco de teclado visible. #006FC9 supera 3:1 tanto sobre hueso como sobre navy. */
+:focus-visible { outline: 3px solid #006FC9; outline-offset: 2px; border-radius: 2px; }
+#side-nav.on-dark .sn-item:focus-visible,
+#hero :focus-visible { outline-color: #FFB900; }
+
+/* Solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Saltar al contenido */
+.skip-link {
+  position: fixed;
+  top: 8px; left: 8px;
+  z-index: 1100;
+  transform: translateY(-160%);
+  background: #001A4F;
+  color: #FBFAF6;
+  font-family: Manrope, sans-serif;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-radius: 75px;
+  transition: transform 260ms cubic-bezier(.16,1,.3,1);
+}
+.skip-link:focus { transform: none; color: #FBFAF6; }
+
 /* pill link hover: letter-spacing widen */
 .pill { transition: letter-spacing 800ms cubic-bezier(0.19,1,0.22,1), border-color 800ms cubic-bezier(0.19,1,0.22,1), color 400ms ease; }
 .pill:hover { letter-spacing: .05em; }
@@ -105,23 +143,27 @@ img, video { max-width: 100%; }
 .sn-cta .sn-label { font-weight: 600; }
 #side-nav.is-open .sn-cta .sn-label { opacity: 1; }
 
-/* Teclado: abrir al enfocar cualquier ítem */
-#side-nav:focus-within { padding: 12px 22px; background: rgba(251,250,246,.5); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border-color: rgba(0,26,79,.14); }
-#side-nav:focus-within .sn-label { opacity: .55; max-width: 260px; transform: none; }
+/* Teclado: abrir al enfocar cualquier ítem.
+   Solo en punteros finos: en pantallas táctiles el reflujo de :focus-within
+   ocurría en el pointerdown y movía el ítem antes del click, de modo que el
+   primer toque se perdía. Ahí la apertura la controla JS con .is-open. */
+@media (hover: hover) and (pointer: fine) {
+  #side-nav:focus-within { padding: 12px 22px; background: rgba(251,250,246,.5); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border-color: rgba(0,26,79,.14); }
+  #side-nav:focus-within .sn-label { opacity: .55; max-width: 260px; transform: none; }
+}
+/* En táctil el foco no despliega, pero sí debe verse dónde está */
+#side-nav .sn-item:focus-visible .sn-label { opacity: 1; max-width: 260px; transform: none; }
 
 /* Pantallas angostas: la barra abierta cae como panel vertical */
 @media (max-width: 860px) {
-  #side-nav.is-open,
-  #side-nav:focus-within {
+  #side-nav.is-open {
     flex-direction: column;
     align-items: flex-start;
     padding: 14px 18px;
     border-radius: 22px;
   }
-  #side-nav.is-open .sn-item,
-  #side-nav:focus-within .sn-item { padding: 6px 0; }
-  #side-nav.is-open .sn-cta,
-  #side-nav:focus-within .sn-cta {
+  #side-nav.is-open .sn-item { padding: 6px 0; }
+  #side-nav.is-open .sn-cta {
     margin: 6px 0 0;
     padding: 12px 0 0;
     border-left: 0;
@@ -130,15 +172,47 @@ img, video { max-width: 100%; }
   #side-nav.on-dark.is-open .sn-cta { border-top-color: rgba(251,250,246,.22); }
 }
 @media (max-width: 720px) {
-  #side-nav { left: 10px; top: 10px; gap: 0; padding: 8px 10px; }
+  #side-nav { left: 10px; top: 10px; gap: 0; padding: 6px 8px; }
   .sn-item { padding: 4px 7px; }
 }
 
+/* Área táctil mínima (WCAG 2.5.8): cerrada, cada ítem medía 31x20 px */
+@media (pointer: coarse) {
+  .sn-item { min-height: 44px; min-width: 44px; justify-content: center; }
+  #side-nav.is-open .sn-item { justify-content: flex-start; }
+}
+
 /* Mosaico fotográfico de los principios: sin marcos, separado solo por aire */
+/* minmax(min(100%,260px),1fr) fijaba un mínimo de 260px por columna: en un
+   móvil de 360px las dos columnas exigían 530px y el documento entero se
+   desbordaba en horizontal. minmax(0,1fr) deja que las columnas se encojan,
+   y por debajo de 620px el mosaico pasa a una sola columna. */
 .principios-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(10px, 1.4vw, 18px);
+}
+@media (max-width: 620px) {
+  .principios-grid { grid-template-columns: minmax(0, 1fr); }
+  .principio-card { min-height: clamp(280px, 62vw, 380px); }
+}
+
+/* Los chips de temario llevan white-space:nowrap en estilo en línea. El más
+   largo («Formulación de proyectos con evidencia») no cabe en 320px y sacaba
+   8px al documento entero. En pantallas muy angostas se les deja partir. */
+@media (max-width: 420px) {
+  [style*="white-space:nowrap"] { white-space: normal !important; }
+}
+
+/* Mismo fallo que arriba, en «Investigaciones destacadas»: dos columnas con
+   mínimos de 320px y 240px sumaban 592px dentro de un contenedor de 320px. */
+.grid-asimetrico {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+}
+@media (max-width: 720px) {
+  .grid-asimetrico { grid-template-columns: minmax(0, 1fr); }
 }
 .principio-card {
   position: relative;
@@ -192,6 +266,15 @@ img, video { max-width: 100%; }
 
 [data-page] { display: none; }
 [data-page].is-active { display: block; }
+/* Las páginas inactivas llevan además el atributo hidden (lo pone main.js):
+   el documento nunca expone más de un <main> visible. */
+
+/* Sin JS no hay conmutador de páginas: se muestran todas, encadenadas, y los
+   href del nav funcionan como anclas normales. */
+html.no-js [data-page] { display: block; }
+html.no-js .cursor-dot, html.no-js .cursor-ring { display: none; }
+/* .on-dark lo pone main.js: sin JS los puntos quedaban navy sobre el hero navy */
+html.no-js #side-nav .sn-item { color: #FBFAF6; }
 
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes node-in { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
